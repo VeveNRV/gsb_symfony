@@ -1,0 +1,26 @@
+.fiche-frais {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.liste-ficheFrais {
+    margin: 50px 200px;
+    text-align: left;
+}
+
+.box {
+    text-align: center;
+    background-color: #E9ECEF;
+    padding: 10px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+
+.resume {
+    margin: 20px 0;
+}
+
+.total {
+    margin-left: 20px;
+    text-align: left;
+}

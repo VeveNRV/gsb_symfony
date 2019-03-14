@@ -1,0 +1,59 @@
+{% extends '@AppliFrais/base_front.html.twig' %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset ('public/css/user/ficheFrais.css') }}">
+    {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="fiche-frais">
+        <h1>Vos fiches de frais !</h1>
+        <div class="liste-ficheFrais">
+            <div class="box">
+                <h2>Novembre 2018</h2>
+                <hr class="my-4">
+                <div class="resume">
+                    <div class="row">
+                        <div class="col-md-6">
+                           <h4>Frais forfaitisés</h4>
+                            <p>- Nuités: 150 €<br> - Kilométrages: 80 €</p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h4>Frais non-forfaitisés</h4>
+                            <p>- Repas: 45 €<br> - Sorties: 35 €</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="total">
+                    <h6>Total: 210 €</h6>
+                </div>
+            </div>
+
+            <div class="box">
+                <h2>Novembre 2018</h2>
+                <hr class="my-4">
+                <div class="resume">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Frais forfaitisés</h4>
+                            <p>- Nuités: 150 €<br> - Kilométrages: 80 €</p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h4>Frais non-forfaitisés</h4>
+                            <p>- Repas: 45 €<br> - Sorties: 35 €</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="total">
+                    <h6>Total: 210 €</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

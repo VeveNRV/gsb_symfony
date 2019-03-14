@@ -1,0 +1,27 @@
+{% extends '@AppliFrais/base_front.html.twig' %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset ('public/css/connexion.css') }}">
+    {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="connexion">
+            <h1>Connectez-vous !</h1>
+            <div class="formulaire">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nom de compte</label>
+                        <input type="compte" class="form-control" placeholder="Nom de compte...">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Mot de passe</label>
+                        <input type="mdp" class="form-control"  placeholder="Mot de passe..">
+                    </div>
+
+                    <a href="{{ path('ficheFrais_user') }}" class="btn btn-primary btn-lg active btn-formulaire" role="button" aria-pressed="true">Valider</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
