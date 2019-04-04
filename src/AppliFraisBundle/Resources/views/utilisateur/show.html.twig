@@ -1,0 +1,45 @@
+{% extends '@AppliFrais/base_front.html.twig' %}
+
+{% block body %}
+    <center><h1 style="margin: 20px 0;">Détails de l'utilisateur</h1></center>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="col">Id</th>
+                <td>{{ utilisateur.id }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Nom</th>
+                <td>{{ utilisateur.nom }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Prenom</th>
+                <td>{{ utilisateur.prenom }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Datenaissance</th>
+                <td>{% if utilisateur.dateNaissance %}{{ utilisateur.dateNaissance|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th scope="col">Adressepostal</th>
+                <td>{{ utilisateur.adressePostal }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Codepostal</th>
+                <td>{{ utilisateur.codePostal }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Dateembauche</th>
+                <td>{% if utilisateur.dateEmbauche %}{{ utilisateur.dateEmbauche|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+            <a href="{{ path('admin_utilisateur_index') }}">Back to the list</a>
+
+            <a href="{{ path('admin_utilisateur_edit', { 'id': utilisateur.id }) }}">Edit</a>
+
+    <a href="{{ path('admin_utilisateur_delete', { 'id' : utilisateur.id }) }}">Supprimer</a>
+
+{% endblock %}

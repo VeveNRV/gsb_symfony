@@ -5,6 +5,8 @@ namespace AppliFraisBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppliFraisBundle\Entity\Utilisateur;
+
 
 class DefaultController extends Controller
 {
@@ -23,4 +25,13 @@ class DefaultController extends Controller
     {
         return $this->render('@AppliFrais/front/ficheFrais_user.html.twig');
     }
+
+    /**
+     * @Route("/loginAdmin", name="loginAdmin")
+     */
+    public function loginAdminAction(Request $request)
+    {
+        return $this->render('@AppliFrais/front/admin.html.twig');
+    }
+
 }

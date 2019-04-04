@@ -2,6 +2,8 @@
 
 namespace AppliFraisBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,27 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="utilisateur")
  * @ORM\Entity(repositoryClass="AppliFraisBundle\Repository\UtilisateurRepository")
  */
-class Utilisateur
+class Utilisateur extends BaseUser
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="role_id", type="integer")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    /**
-     * @ORM\ManyToOne(targetEntity="Role", inversedBy="Utilisateur")
-     * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
-     */
-    private $roleId;
+    protected $id;
 
     /**
      * @var string
@@ -68,27 +58,6 @@ class Utilisateur
     private $codePostal;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mdp", type="string", length=255)
-     */
-    private $mdp;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="compte", type="string", length=255)
-     */
-    private $compte;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateEmbauche", type="date")
@@ -96,48 +65,15 @@ class Utilisateur
     private $dateEmbauche;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="ficheFrais", type="string", length=255)
-     */
-    /**
      * @ORM\OneToMany(targetEntity="Fiche_Frais", mappedBy="Utilisateur")
      */
     private $ficheFrais;
 
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
-    }
-
-    /**
-     * Set roleId
-     *
-     * @param integer $roleId
-     *
-     * @return Utilisateur
-     */
-    public function setRoleId($roleId)
-    {
-        $this->roleId = $roleId;
-
-        return $this;
-    }
-
-    /**
-     * Get roleId
-     *
-     * @return int
-     */
-    public function getRoleId()
-    {
-        return $this->roleId;
+        parent::__construct();
+        $this->ficheFrais = new ArrayCollection();
     }
 
     /**
@@ -261,78 +197,6 @@ class Utilisateur
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Utilisateur
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set mdp
-     *
-     * @param string $mdp
-     *
-     * @return Utilisateur
-     */
-    public function setMdp($mdp)
-    {
-        $this->mdp = $mdp;
-
-        return $this;
-    }
-
-    /**
-     * Get mdp
-     *
-     * @return string
-     */
-    public function getMdp()
-    {
-        return $this->mdp;
-    }
-
-    /**
-     * Set compte
-     *
-     * @param string $compte
-     *
-     * @return Utilisateur
-     */
-    public function setCompte($compte)
-    {
-        $this->compte = $compte;
-
-        return $this;
-    }
-
-    /**
-     * Get compte
-     *
-     * @return string
-     */
-    public function getCompte()
-    {
-        return $this->compte;
-    }
-
-    /**
      * Set dateEmbauche
      *
      * @param \DateTime $dateEmbauche
@@ -357,21 +221,36 @@ class Utilisateur
     }
 
     /**
-     * @return string
+     * Add ficheFrai
+     *
+     * @param \AppliFraisBundle\Entity\Fiche_Frais $ficheFrai
+     *
+     * @return Utilisateur
+     */
+    public function addFicheFrai(\AppliFraisBundle\Entity\Fiche_Frais $ficheFrai)
+    {
+        $this->ficheFrais[] = $ficheFrai;
+
+        return $this;
+    }
+
+    /**
+     * Remove ficheFrai
+     *
+     * @param \AppliFraisBundle\Entity\Fiche_Frais $ficheFrai
+     */
+    public function removeFicheFrai(\AppliFraisBundle\Entity\Fiche_Frais $ficheFrai)
+    {
+        $this->ficheFrais->removeElement($ficheFrai);
+    }
+
+    /**
+     * Get ficheFrais
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getFicheFrais()
     {
         return $this->ficheFrais;
     }
-
-    /**
-     * @param string $ficheFrais
-     */
-    public function setFicheFrais($ficheFrais)
-    {
-        $this->ficheFrais = $ficheFrais;
-    }
-
-
 }
-

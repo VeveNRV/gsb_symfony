@@ -1,0 +1,46 @@
+{% extends '@AppliFrais/base_front.html.twig' %}
+
+{% block nav %}
+    <form class="form-inline">
+        <a class="nav-link" href="{{ path('admin_homepage') }}">Ajouter utilisateur</a>
+        <a class="nav-link" href="{{ path('admin_utilisateur_index') }}">Liste utilisateur</a>
+    </form>
+{% endblock %}
+
+{% block body %}
+
+    <center><h1 style="margin: 20px 0;">Liste des utilisateurs</h1></center>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Date de naissance</th>
+            <th scope="col">Adresse postal</th>
+            <th scope="col">Code postal</th>
+            <th scope="col">Date d'embauche</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+                <td><a href="{{ path('admin_utilisateur_show', { 'id': utilisateur.id }) }}">{{ utilisateur.id }}</a></td>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{% if utilisateur.dateNaissance %}{{ utilisateur.dateNaissance|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ utilisateur.adressePostal }}</td>
+                <td>{{ utilisateur.codePostal }}</td>
+                <td>{% if utilisateur.dateEmbauche %}{{ utilisateur.dateEmbauche|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('admin_utilisateur_edit', { 'id': utilisateur.id }) }}">Modifier</a>
+                    <a class="btn btn-primary" href="{{ path('admin_utilisateur_show', { 'id': utilisateur.id }) }}">Détails</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

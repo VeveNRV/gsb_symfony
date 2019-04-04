@@ -127,5 +127,14 @@ class Liste_Frais
     {
         return $this->fraisForfait;
     }
+
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getLibelle();
+    }
 }
 

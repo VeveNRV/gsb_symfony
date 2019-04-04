@@ -1,0 +1,73 @@
+{% extends '@AppliFrais/base_front.html.twig' %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset ('public/css/style.css') }}">
+    {% endblock %}
+
+{% block nav %}
+    <form class="form-inline">
+        <a class="nav-link" href="{{ path('admin_homepage') }}">Ajouter utilisateur</a>
+        <a class="nav-link" href="{{ path('admin_utilisateur_index') }}">Liste utilisateur</a>
+    </form>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="connexion">
+           <center><h1>Ajoutez un nouvel utilisateur.</h1></center>
+            <div class="formulaire">
+
+                {{ form_start(formUser) }}
+
+                <div class="form-group">
+                    {{ form_row(formUser.roles, {'label':'Rôle'}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(formUser.nom, {'label':'Nom','attr' : {'placeholder': 'Nom...'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(formUser.prenom, {'label':'Prenom','attr' : {'placeholder': 'Prenom...'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(formUser.dateNaissance, {'label':'Date de naissance'}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(formUser.adressePostal, {'label':'Adresse postal','attr' : {'placeholder': 'Adresse postal...'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(formUser.codePostal, {'label':'Code postal','attr' : {'placeholder': 'Code postal...'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(formUser.email, {'label':'Mail','attr' : {'placeholder': 'Mail...'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(formUser.username, {'label':'Identifiant','attr' : {'placeholder': 'Identifiant...'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(formUser.plainPassword, {'label':'Mot de passe','attr' : {'placeholder': 'Mot de passe...'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(formUser.dateEmbauche, {'label':'Date d\'embauche'}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(formUser.enabled, {'label':'Activé utilisateur'}) }}
+                </div>
+
+                <button type="submit" class="btn btn-success">Valider</button>
+
+                {{ form_end(formUser) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

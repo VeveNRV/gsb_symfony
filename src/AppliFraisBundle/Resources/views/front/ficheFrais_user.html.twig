@@ -1,11 +1,21 @@
 {% extends '@AppliFrais/base_front.html.twig' %}
 
     {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="{{ asset ('public/css/user/ficheFrais.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset ('public/css/front/ficheFrais.css') }}">
     {% endblock %}
 
+{% block nav %}
+<form class="form-inline">
+    <a class="nav-link" href="{{ path('fiche-du-mois') }}">Fiche du mois</a>
+    <a class="nav-link" href="{{ path('ficheFrais_user') }}">Mes fiches</a>
+    <a class="nav-link" href="#"><i class="fas fa-power-off" style="margin-right:5px;"></i>Déconnexion</a>
+</form>
+{% endblock %}
+
 {% block body %}
+
 <div class="container">
+
     <div class="fiche-frais">
         <h1>Vos fiches de frais !</h1>
         <div class="liste-ficheFrais">
@@ -55,5 +65,6 @@
         </div>
     </div>
 </div>
+
 
 {% endblock %}

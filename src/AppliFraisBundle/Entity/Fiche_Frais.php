@@ -25,8 +25,6 @@ class Fiche_Frais
      * @var int
      *
      * @ORM\Column(name="utilisateur_id", type="integer")
-     */
-    /**
      * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="Fiche_Frais")
      * @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id")
      */
@@ -36,8 +34,6 @@ class Fiche_Frais
      * @var int
      *
      * @ORM\Column(name="etat_id", type="integer")
-     */
-    /**
      * @ORM\ManyToOne(targetEntity="Etat", inversedBy="Fiche_Frais")
      * @ORM\JoinColumn(name="etat_id", referencedColumnName="id")
      */
